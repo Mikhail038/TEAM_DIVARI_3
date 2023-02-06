@@ -39,11 +39,11 @@ void post_notation (int N){
         //c = '\0';
         //sp_all[i][j] = c;
         //sp_all[i] = (char*) realloc(sp_all[i], j + 1);
-        sp_all[i] = post_conversation(sp_all[i]);
+        sp_all[i] = post_conversion(sp_all[i]);
 
         fprintf(fw, "%s\0\n", sp_all[i]);
     }
-    
+
     fclose(fp);
     fclose(fw);
 }

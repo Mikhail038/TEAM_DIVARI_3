@@ -31,13 +31,22 @@ DO: FOLDERS  DO_RPN
 FOLDERS:
 	mkdir -p OBJECTS;
 
-DO_RPN: $(VR_OBJ)/rpn_main.o
-	$(VR_COMPILER) $(VR_OBJ)/rpn_main.o -o rpn $(VR_FLAGS)
+DO_RPN: $(VR_OBJ)/rpn_main.o $(VR_OBJ)/calculating.o $(VR_OBJ)/pst_notation.o $(VR_OBJ)/post_conversion.o
+	$(VR_COMPILER) $(VR_OBJ)/rpn_main.o $(VR_OBJ)/calculating.o $(VR_OBJ)/pst_notation.o $(VR_OBJ)/post_conversion.o -o rpn $(VR_FLAGS)
 
 #=============================================================================================================================================================================
 
 $(VR_OBJ)/rpn_main.o: $(VR_SRC)/rpn_main.cpp
 	$(VR_COMPILER) -c -o $(VR_OBJ)/rpn_main.o $(VR_SRC)/rpn_main.cpp $(VR_FLAGS)
+
+$(VR_OBJ)/calculating.o: $(VR_SRC)/calculating.cpp
+	$(VR_COMPILER) -c -o $(VR_OBJ)/calculating.o $(VR_SRC)/calculating.cpp $(VR_FLAGS)
+
+$(VR_OBJ)/pst_notation.o: $(VR_SRC)/pst_notation.cpp
+	$(VR_COMPILER) -c -o $(VR_OBJ)/pst_notation.o $(VR_SRC)/pst_notation.cpp $(VR_FLAGS)
+
+$(VR_OBJ)/post_conversion.o: $(VR_SRC)/post_conversion.cpp
+	$(VR_COMPILER) -c -o $(VR_OBJ)/post_conversion.o $(VR_SRC)/post_conversion.cpp $(VR_FLAGS)
 
 #=============================================================================================================================================================================
 
