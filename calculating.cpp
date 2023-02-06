@@ -1,6 +1,7 @@
 #include "rpn.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <ctype.h>
 #include <assert.h>
 #include <sys/stat.h>
@@ -43,7 +44,7 @@ void calculating_value()
 {
         // Create stack.
         SStack<int> stk {};
-        stack_constuctor(&stk, 300);
+        stack_constructor(&stk, 300);
         
         // Read input file.
         file_t input {};
@@ -72,7 +73,7 @@ void calculating_value()
                 // Check if EOL, end calculation if yes.
                 if (buffer[i] == '\n') {
                         int num = 0;
-                        pop_from_stack(&stk, num);
+                        pop_from_stack(&stk, &num);
                         rez[count++] = num;
                 }
 
@@ -82,8 +83,8 @@ void calculating_value()
                 } else {
                         int num1 = 0;
                         int num2 = 0;
-                        pop_from_stack(&stk, num1);
-                        pop_from_stack(&stk, num2);
+                        pop_from_stack(&stk, &num1);
+                        pop_from_stack(&stk, &num2);
 
                         switch (buffer[i]) {
                                 case '+':
@@ -97,6 +98,9 @@ void calculating_value()
                                         break;
                                 case '*':
                                         push_in_stack(&stk, num1 * num2);
+                                        break;
+                                case '^':
+                                        push_in_stack(&stk, (int) pow(num1, num2));
                                         break;
                                 default:
                                         fprintf(stderr, "Encountered '%c'\n", buffer[i]);
