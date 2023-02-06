@@ -11,7 +11,7 @@ void post_notation (int N){
     char c;
 
     FILE *fp = fopen("constant_expressions.txt", "r");
-    FILE *fw = fopen("postfix_notation.txt. ", "w");
+    FILE *fw = fopen("postfix_notation.txt", "w");
     char** sp_all = (char**) calloc(N, sizeof(char*));
 
     assert(sp_all != NULL);
