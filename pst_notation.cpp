@@ -31,7 +31,7 @@ void post_notation (int N){
         //}
         sp_all[i] = (char*) calloc(max_len, sizeof(char));
         fscanf(fp, "%s", sp_all[i]);
-        curr_len = strlen(sp_all[i]);
+        curr_len = (int) strlen(sp_all[i]);
         sp_all[i] = (char*) realloc(sp_all[i], curr_len);
 
 
